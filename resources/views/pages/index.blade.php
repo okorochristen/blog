@@ -1,27 +1,31 @@
 @extends('layout.master')
 @section('title','home')
 @section('content')
-<table class="table table-responsive">
+<div class="container">
+<table class="table table-responsive table striped table-border table-condensed" >
     <thead>
         <tr>
             <th>No</th>
-            <th>Name</th>
-            <th>email</th>
+            <th>title</th>
+            <th>content</th>
             <th> Date Created</th>
+
         </tr>
-    </thead> 
+    </thead>
     <tbody>
         @foreach($users as $user)
         <tr>
             <td>{{$loop->index+1}} </td>
-            <td>{{$user->name}} </td>
-            <td>{{$user->email}} </td>
+            <td>{{$user->title}} </td>
+            <td>{{$user->content}} </td>
             <td>{{$user->created_at}} </td>
-        
+
+
         </tr>
     @endforeach
 
     </tbody>
 
 </table>
+</div>
 @endsection

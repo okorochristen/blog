@@ -6,6 +6,7 @@ use App\Post;
 use Auth;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 
 class StandardController extends Controller
 {
@@ -17,13 +18,18 @@ class StandardController extends Controller
 
     // created controller for controller
     public function table(){
-        $users =User::all();
+        $users =Post::all();
         return view('pages.index', compact('users'));
+    }
+    public function show(){
+        $post =Post::all();
+        return view('posts.show', compact('post'));
     }
 
     
+    
     public function create(){
-        $users =User::all();
+
         return view('posts.create');
     }
     
@@ -40,10 +46,58 @@ class StandardController extends Controller
         return redirect()->back();
     }
 
+   
+
+
+    public function new(){
+        $post=Post::all();
+        return view('posts.new',compact('post'));
+    }
+
     public function details($id){
         $post=Post::whereId($id)->first();
         return view('posts.details',compact('post'));
     }
+
+
+      
+    public function edit($id)
+
+    {
+        $post=Post::whereId($id)->first();
+        return view('posts.edit',compact('post'));
+
+    }
+
+
+    public function update(PostRequest $request,  $id)
+
+    {
+        $post=Post::find($id);
+        $post->title=$request->title;
+        $post->content=$request->content;
+        $post->save();
+        return redirect('/posts/show');
+
+        
+
+    }
+
+          
+          
+          public function delete($id)
+          {
+              
+              $post = Post::find( $id );
+      
+    
+              $post->delete();
+              
+            //   Session::flash('success', 'Post deleted.');
+              
+              return redirect()->back();
+          }  
+      
 
 
 }

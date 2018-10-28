@@ -16,11 +16,22 @@ Route::get('/', function () {
 });
 Auth::routes();
 
-Route::get('posts/create','StandardController@create')->middleware('auth');;
-Route::post('posts/create','StandardController@stores')->middleware('auth');
+Route::get('posts/create','StandardController@create')->middleware('auth');
+Route::post('posts/create','StandardController@store')->middleware('auth');
+
 Route::get('pages/index','StandardController@table');
 Route::get('auth/register','StandardController@register');
-Route::get('posts/details','StandardController@details')->name('details');
+Route::get('posts/details/{id}','StandardController@details')->name('details');
+Route::get('posts/new','StandardController@new');
+Route::get('posts/show','StandardController@show');
+
+Route::get('posts/edit/{id}','StandardController@edit')->name('edit');
+Route::post('posts/edit/{id}','StandardController@update')->name('update');
+
+Route::get('pages/index/{id}','StandardController@delete')->name('delete');
+
+
+
 
 
 
