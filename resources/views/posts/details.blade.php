@@ -30,10 +30,13 @@
 
 </div>
                 {{-- div for comment starts here --}}
-                @foreach($post->comments as $comment)
-                        <div class="panel">
+                <div class="panel">
+                    <h1>comments</h1>
+                @if($post->comment  )
 
-                                <h1>All Comment</h1>
+                @foreach($post->comment as $comment)
+
+
 
 
                                 <div class="panel panel-default">
@@ -43,8 +46,8 @@
                                 <div class="panel-footer">
                                 commented by {{$comment->name}}
                                 </div>
-                            @endforeach
-
+                @endforeach
+                                @endif
                         </div>
                  {{-- div for comment ends here --}}
 
