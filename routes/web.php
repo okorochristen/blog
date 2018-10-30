@@ -20,12 +20,19 @@ Route::get('posts/create','StandardController@create')->middleware('auth');
 Route::post('posts/create','StandardController@store')->middleware('auth');
 
 Route::get('pages/index','StandardController@table');
+// to register users
 Route::get('auth/register','StandardController@register');
+// to fetch each post
 Route::get('posts/details/{id}','StandardController@details')->name('details');
+// for comment
+Route::post('posts/details', 'CommentController@store')->name('comment.add');
+//commentends
 Route::get('posts/new','StandardController@new');
 Route::get('posts/show','StandardController@show');
 
 Route::get('posts/edit/{id}','StandardController@edit')->name('edit');
+
+// controller for updating
 Route::post('posts/edit/{id}','StandardController@update')->name('update');
 
 Route::get('pages/index/{id}','StandardController@delete')->name('delete');

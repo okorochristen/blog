@@ -7,7 +7,7 @@
             <th colspan="2">No</th>
             <th colspan="2">title</th>
 
-            <th colspan="2">User id</th>
+            <th colspan="2">User</th>
             <th colspan="2">content</th>
 
             <th colspan="2">Date Created</th>
@@ -20,7 +20,7 @@
         <tr>
             <td colspan="2">{{$loop->index+1}} </td>
             <td colspan="2">{{$post->title}} </td>
-            <td colspan="2">{{$post->user_id}} </td>
+            <td colspan="2">{{$post->user->name}} </td>
             <td colspan="2">{{$post->content}} </td>
              <td>{{$post->created_at}} </td>
 

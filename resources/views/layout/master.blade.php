@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 </head>
 <body>
+
 @yield('content')
+
 </body>
 </html>

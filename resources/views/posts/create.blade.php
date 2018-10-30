@@ -5,6 +5,11 @@
 <form method="post">
 @csrf
 <div class="form-group">
+        @if(session('status'))
+        <div class="alert alert-success">{{
+            session('status')
+        }}</div>
+        @endif
   <label>title</label><br>
 
     <input type="text" name="title" class="form-control">

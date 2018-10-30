@@ -10,7 +10,7 @@ use App\Http\Requests\PostRequest;
 
 class StandardController extends Controller
 {
-   
+
     // created controller for register
     public function register(){
         return view('auth.register');
@@ -26,13 +26,13 @@ class StandardController extends Controller
         return view('posts.show', compact('post'));
     }
 
-    
-    
+
+
     public function create(){
 
         return view('posts.create');
     }
-    
+
 
 
     public function store(PostRequest $request){
@@ -43,10 +43,10 @@ class StandardController extends Controller
             'user_id'=>$id
         ]);
         $post->save();
-        return redirect()->back();
+        return redirect()-> back()->with('status','successful');
     }
 
-   
+
 
 
     public function new(){
@@ -60,7 +60,7 @@ class StandardController extends Controller
     }
 
 
-      
+
     public function edit($id)
 
     {
@@ -79,25 +79,25 @@ class StandardController extends Controller
         $post->save();
         return redirect('/posts/show');
 
-        
+
 
     }
 
-          
-          
+
+
           public function delete($id)
           {
-              
+
               $post = Post::find( $id );
-      
-    
+
+
               $post->delete();
-              
+
             //   Session::flash('success', 'Post deleted.');
-              
+
               return redirect()->back();
-          }  
-      
+          }
+
 
 
 }
